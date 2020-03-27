@@ -186,7 +186,7 @@ export default {
     async updateCategory() {
       const res = await this.$http.post(
         "/admin/category/update",
-        this.$qs.stringify(this.editCategoryFrom)
+        this.editCategoryFrom
       );
 
       if (res.data.code !== 0) {
@@ -221,7 +221,7 @@ export default {
     async saveCategory() {
       const res = await this.$http.post(
         "/admin/category/add",
-        this.$qs.stringify(this.addCategoryFrom)
+        this.addCategoryFrom
       );
 
       if (res.data.code !== 0) {
@@ -297,10 +297,7 @@ export default {
         type: "warning"
       })
         .then(async () => {
-          const res = await this.$http.post(
-            "/admin/category/delete",
-            this.$qs.stringify({ cid: id })
-          );
+          const res = await this.$http.delete("/admin/category/" + id);
           if (res.data.code !== 0) return this.$message.error("删除失败");
           this.getCategoryList();
           this.$message({

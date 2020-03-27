@@ -46,7 +46,7 @@
         :tree-props="{children: 'children', hasChildren: 'hasChildren'}"
       >
         <el-table-column type="index"></el-table-column>
-        <el-table-column prop="name" label="商品名称"></el-table-column>
+        <el-table-column prop="title" label="商品名称"></el-table-column>
         <el-table-column prop="status" label="状态">
           <template slot-scope="scope">
             <el-switch v-model="scope.row.status" @change="changStatus(scope.row)"></el-switch>
@@ -77,10 +77,10 @@
           label-width="80px"
         >
           <el-form-item label="名称" prop="name">
-            <el-input v-model="addProductFrom.name" placeholder="请输入商品名称"></el-input>
+            <el-input v-model="addProductFrom.title" placeholder="请输入商品名称"></el-input>
           </el-form-item>
           <el-form-item label="副标题" prop="subtitle">
-            <el-input v-model="addProductFrom.subtitle" placeholder="请输入商品副标题"></el-input>
+            <el-input v-model="addProductFrom.subTitle" placeholder="请输入商品副标题"></el-input>
           </el-form-item>
           <el-form-item label="分类" prop="categoryId">
             <el-select v-model="addParent " placeholder="请选择" @change="getAddChildCategory">
@@ -159,7 +159,7 @@
           label-width="80px"
         >
           <el-form-item label="名称" prop="name">
-            <el-input v-model="editProductFrom.name" placeholder="请输入商品名称"></el-input>
+            <el-input v-model="editProductFrom.title" placeholder="请输入商品名称"></el-input>
           </el-form-item>
           <el-form-item label="副标题" prop="subTitle">
             <el-input v-model="editProductFrom.subTitle" placeholder="请输入商品副标题"></el-input>
@@ -255,8 +255,8 @@ export default {
       detailDialogVisible: false,
       editDetailDialogVisible: false,
       addProductFrom: {
-        name: "",
-        subtitle: "",
+        title: "",
+        subTitle: "",
         categoryId: "",
         status: true,
         price: "",
@@ -276,7 +276,7 @@ export default {
 
       editDialogFormVisible: false,
       editProductFrom: {
-        name: "",
+        title: "",
         subTitle: "",
         categoryId: "",
         status: true,
@@ -310,6 +310,7 @@ export default {
         "/admin/product/getById",
         this.$qs.stringify({ id: id })
       );
+      console.log(res.data.data);
       this.editProductFrom = res.data.data;
       var arr = this.editProductFrom.subImageList;
       var arrImage = [];
