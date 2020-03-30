@@ -12,6 +12,7 @@ import Druid from '@/components/druid/Druid.vue'
 import Interface from '@/components/druid/Interface.vue'
 import Menu from '@/components/menu/Menu.vue'
 import Permission from '@/components/permission/Permission.vue'
+import Stock from '@/components/product/Stock.vue'
 
 Vue.use(Router)
 
@@ -31,6 +32,7 @@ const router = new Router({
                     { path: '/permission', component: Permission },
                     { path: '/category', component: Category },
                     { path: '/product', component: Product },
+                    { path: '/stock', component: Stock },
                     { path: '/order', component: Order },
                     { path: '/order_detail', component: OrderDetail },
                     { path: '/druid', component: Druid },

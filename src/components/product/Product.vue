@@ -65,6 +65,9 @@
                 @click="deleteCategoryOpen(scope.row.id)"
               ></el-button>
             </el-tooltip>
+            <el-tooltip class="item" effect="dark" content="SKU" placement="top" :enterable="false">
+              <el-button type="info" icon="el-icon-setting" circle @click="addSku(scope.row.id)"></el-button>
+            </el-tooltip>
           </template>
         </el-table-column>
       </el-table>
@@ -303,6 +306,16 @@ export default {
     this.getCategoryList();
   },
   methods: {
+    addSku(id) {
+      this.$router.push({
+        path: "/stock", //跳转路由
+        query: {
+          //参数对象
+          id: id
+        }
+      });
+    },
+
     async update(p) {
       var id = p.id;
       this.editDialogFormVisible = true;
